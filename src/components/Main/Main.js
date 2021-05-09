@@ -25,7 +25,7 @@ const Main = () => {
           variant="subtitle1"
           style={{ lineHeight: "1.5em", marginTop: "20px" }}
         >
-          Bla bla bla
+          Ex: Try saying "Add 50$ into category Salary on Monday"
         </Typography>
         <Divider />
         <Form />
