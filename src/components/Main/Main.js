@@ -22,7 +22,7 @@ const Main = () => {
         </Typography>
         <Typography
           align="center"
-          variant="subsittle1"
+          variant="subsitle1"
           style={{ lineHeight: "1.5em", marginTop: "20px" }}
         >
           Bla bla bla
