@@ -1,29 +1,27 @@
-import { useContext } from "react";
-import { ExpenseTrackerContext } from "./context/context";
+import { useContext } from "react"
+import { ExpenseTrackerContext } from "./context/context"
 import {
   incomeCategories,
   expenseCategories,
   resetCategories,
-} from "./constants/categories";
+} from "./constants/categories"
 
 const useTransactions = (title) => {
-  resetCategories();
-  const { transactions } = useContext(ExpenseTrackerContext);
-  const transactionsPerType = transactions.filter((t) => t.type === title);
+  resetCategories()
+  const { transactions } = useContext(ExpenseTrackerContext)
+  const transactionsPerType = transactions.filter((t) => t.type === title)
   const total = transactionsPerType.reduce(
     (acc, currentValue) => (acc += currentValue.amount),
     0
-  );
-  const categories = title === "Income" ? incomeCategories : expenseCategories;
-
-  console.log({ transactionsPerType, total, categories });
+  )
+  const categories = title === "Income" ? incomeCategories : expenseCategories
 
   transactionsPerType.forEach((element) => {
-    const category = categories.find((c) => c.type === element.category);
-    if (category) category.amount += element.amount;
-  });
+    const category = categories.find((c) => c.type === element.category)
+    if (category) category.amount += element.amount
+  })
 
-  const filteredCategories = categories.filter((c) => c.amount > 0);
+  const filteredCategories = categories.filter((c) => c.amount > 0)
   const chartData = {
     datasets: [
       {
@@ -32,8 +30,8 @@ const useTransactions = (title) => {
       },
     ],
     labels: filteredCategories.map((c) => c.type),
-  };
-  return { total, chartData };
-};
+  }
+  return { total, chartData }
+}
 
-export default useTransactions;
+export default useTransactions
